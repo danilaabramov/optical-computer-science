@@ -1,0 +1,75 @@
+{
+  "name": "lab1",
+  "version": "0.1.0",
+  "license": "DANILA",
+  "description": "Simple boilerplate for developing an Electron app with React",
+  "author": "willjw3",
+  "build": {
+    "appId": "react.electron",
+    "win": {
+      "icon": "public/favicon.ico"
+    }
+  },
+  "main": "public/electron.js",
+  "homepage": "./",
+  "private": true,
+  "dependencies": {
+    "@babel/helper-validator-identifier": "^7.12.11",
+    "@tensorflow-models/mobilenet": "^2.1.0",
+    "@tensorflow/tfjs": "^3.15.0",
+    "@tensorflow/tfjs-node": "^3.15.0",
+    "bessel": "^1.0.2",
+    "complex.js": "^2.0.15",
+    "cross-env": "^7.0.3",
+    "custom-electron-titlebar": "^3.2.6",
+    "electron-is-dev": "^1.1.0",
+    "fft-js": "^0.0.12",
+    "fftshift": "^1.0.1",
+    "jsnumpy": "^1.1.10",
+    "math": "^0.0.3",
+    "mathjs": "^10.4.2",
+    "plotly.js-dist": "^2.11.1",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.2.0",
+    "react-vis": "^1.11.7",
+    "recharts": "^2.0.9",
+    "transpose": "^0.0.2",
+    "yarn": "^1.22.17"
+  },
+  "scripts": {
+    "start-react": "react-scripts start",
+    "build-react": "react-scripts build",
+    "test-react": "react-scripts test --env=jsdom",
+    "eject-react": "react-scripts eject",
+    "build-electron": "electron-builder",
+    "build": "yarn build-react && yarn build-electron",
+    "start": "concurrently \"cross-env BROWSER=none yarn start-react\" \"wait-on http://localhost:3000 && electron --disable-gpu .\"",
+    "package-mac": "electron-packager .  --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager .  lab1 --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/favicon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Tutorial App\"",
+    "package-linux": "electron-packager . lab1 --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/favicon.png --prune=true --out=release-builds"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "^6.0.0",
+    "electron": "^11.3.0",
+    "electron-builder": "^22.1.0",
+    "electron-packager": "^15.2.0",
+    "wait-on": "^5.2.1"
+  }
+}
